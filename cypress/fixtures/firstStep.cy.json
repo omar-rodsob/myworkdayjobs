@@ -1,0 +1,53 @@
+describe('template spec', () => {
+  it('Fill First Step', () => {
+    cy.visit('');
+    cy.wait(6000);
+    cy.get('#spinnerContainer').should('not.exist');
+    cy.get('[data-uxi-element-id="radio_2"]').check();
+    cy.get('[data-automation-id="legalNameSection_firstName"]').type('Omar');
+    cy.get('[data-automation-id="legalNameSection_lastName"]').type('Rodriguez');
+    cy.get('[data-automation-id="legalNameSection_secondaryLastName"]').type('Soberanes');
+    cy.get('[data-automation-id="addressSection_addressLine1"]').type('Avenida Moctezuma 4630,')
+    cy.get('[data-automation-id="addressSection_citySubdivision1"]').type('Jardines del sol');
+    cy.get('[data-automation-id="addressSection_postalCode"]').type('45050');
+    cy.get('[data-automation-id="addressSection_city"]').type('Zapopan');
+    cy.get('[data-automation-id="email"]').type('omar.rodsob@gmail.com');
+    cy.get('[data-automation-id="phone-number"]').type('6621393007');
+    cy.get('[data-automation-id="bottom-navigation-next-button"]').click();
+    cy.wait(6000);
+    cy.get('[data-automation-id="workExperienceSection"]').should('be.visible');
+    cy.get('[data-automation-id="bottom-navigation-back-button"]').should('be.visible');
+    cy.get('[data-automation-id="file-upload-drop-zone"]').selectFile('cypress/fixtures/OmarRodriguez-Resume.pdf',{action: 'drag-drop'});
+    cy.get('[data-automation-id="file-upload-item-name"]').contains('OmarRodriguez-Resume.pdf');
+    cy.get('[data-automation-id="file-upload-drop-zone"]').selectFile('cypress/fixtures/firstStep.cy.json',{action: 'drag-drop'});
+    cy.get('[data-automation-id="file-upload-item-name"]').contains('firstStep.cy.json');
+    cy.get('[data-automation-id="bottom-navigation-next-button"]').click();
+    cy.wait(6000);
+    cy.get('.css-1j9bnzb').contains('Preguntas de solicitud');
+    cy.get('[data-automation-id="dc303e0171441002029408936b350000"]').click();
+    cy.get('[role="option"]').contains('Yes').click();
+    cy.get('[data-automation-id="dc303e01714410020294092dfa890000"]').click();
+    cy.get('[role="option"]').contains('Yes').click();
+    cy.get('[data-automation-id="dc303e01714410020294092dfa890003"]').click();
+    cy.get('[role="option"]').contains('Yes').click();
+    cy.get('[data-automation-id="dc303e01714410020294092dfa890006"]').type('Zaopan Jalisco mexico');
+    cy.get('[data-automation-id="dc303e01714410020294092dfa890007"]').type('Zapopan');
+    cy.get('[data-automation-id="dc303e0171441002029409c9e7260001"]').click();
+    cy.get('[role="option"]').contains('Yes').click();
+    cy.get('[data-automation-id="dc303e0171441002029409c9e7260004"]').click();
+    cy.get('[role="option"]').contains('No').click();
+    cy.get('[data-automation-id="dc303e0171441002029409c9e7260007"]').type('65000');
+    cy.get('[data-automation-id="dc303e017144100202940a64aabe0000"]').click();
+    cy.get('[role="option"]').contains('No').click();
+    cy.get('[data-automation-id="dc303e017144100202940a64aabe0003"]').click();
+    cy.get('[role="option"]').contains('Yes').click();
+    cy.get('[data-automation-id="bottom-navigation-next-button"]').click();
+    cy.wait(6000);
+    cy.get('.css-1j9bnzb').contains('Revelación de información voluntaria');
+    cy.get('[data-automation-id="gender"]').click();
+    cy.get('[role="option"]').contains('Masculino').click();
+    cy.get('[data-automation-id="bottom-navigation-next-button"]').click();
+    cy.wait(6000);
+    cy.get('[data-automation-id="bottom-navigation-next-button"]').click();
+  });
+})
